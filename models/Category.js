@@ -15,6 +15,14 @@ Category.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    ingredient_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'ingredients',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
