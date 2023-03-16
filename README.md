@@ -8,9 +8,9 @@ This app wil connect 2 inventory databases.
 When 1 product is too low, it will automatically take from the other one.
 
 
-It will feature 3  login access in total.
-For a Manager, the local owner and the Waiter.
-Each user will have different modifying privileges in this app. 
+It will feature 2  login access in total.
+For a Manager, and other for the waiters.
+Each user will have different privileges in this app. 
 Users without ID will still be able to see the databases and the graphics, but not modify it.
 
 It will work for a Burger restaurant. 
