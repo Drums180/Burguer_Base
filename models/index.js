@@ -1,6 +1,6 @@
-const Category = require('./models/Category');
-const Ingredients = require('./models/Ingredients');
-const Suppliers = require('./models/Suppliers');
+const Category = require('./Category');
+const Ingredients = require('./Ingredients');
+const Suppliers = require('./Suppliers');
 
 // Define the one-to-many relationship between Ingredients and Category
 Ingredients.belongsTo(Category, { foreignKey: 'category_id' });
