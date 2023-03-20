@@ -29,7 +29,7 @@ Ingredients.init(
         isDecimal: true,
       }
     },
-    weight: {
+    stock: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
@@ -42,5 +42,17 @@ Ingredients.init(
     modelName: 'ingredients',
   }
 );
+
+ // Subtract the quantity used in the burger from the stock
+Ingredients.updateStock = async function(ingredients) {
+  await Promise.all(Object.entries(ingredients).map(async ([key, value]) => {
+    const ingredient = await Ingredients.findOne({
+      where: { name: key }
+    });
+    
+    ingredient.stock -= value;
+    await ingredient.save();
+  }));
+}
 
 module.exports = Ingredients;
