@@ -27,4 +27,20 @@ router.get('/ingredients/:id', async (req, res) => {
   }
 });
 
+router.put('/', async (req, res) => {
+  try {
+    // Get the burger object from the request body
+    const { burger } = req.body;
+
+    // Call the updateStock method on the Ingredients model to update the stock
+    await Ingredients.updateStock(burger.ingredients);
+
+    // Send a success response
+    res.status(200).json({ message: 'Ingredients stock updated successfully.' });
+  } catch (err) {
+    // Send an error response if there's an error
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
