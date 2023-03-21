@@ -9,7 +9,7 @@ increaseBtns.forEach((btn, index) => {
     quantities[index].innerText = parseInt(quantities[index].innerText) + 1;
   });
 });
-
+a
 decreaseBtns.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     if (parseInt(quantities[index].innerText) > 0) {
