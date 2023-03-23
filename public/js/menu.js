@@ -2,6 +2,15 @@
 const increaseBtns = document.querySelectorAll(".increaseBtn");
 const decreaseBtns = document.querySelectorAll(".decreaseBtn");
 const quantities = document.querySelectorAll(".quantity");
+const orderForm = document.getElementById('orderForm')
+
+orderForm.onsubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const entries = Object.fromEntries(formData.entries())
+  const order = await fetch('api/orders', { method: 'POST', body: entries })
+  console.log(e);
+}
 
 // Event listener to increase/decrease orders
 increaseBtns.forEach((btn, index) => {
@@ -9,7 +18,7 @@ increaseBtns.forEach((btn, index) => {
     quantities[index].innerText = parseInt(quantities[index].innerText) + 1;
   });
 });
-a
+
 decreaseBtns.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     if (parseInt(quantities[index].innerText) > 0) {
