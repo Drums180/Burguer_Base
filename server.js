@@ -15,6 +15,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
 // AUTHENTICATION PENDING
 const crypto = require('crypto');
 const secretKey = crypto.randomBytes(64).toString('hex');
