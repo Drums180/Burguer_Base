@@ -1,6 +1,8 @@
 const Category = require('./Category');
 const Ingredients = require('./Ingredients');
 const Suppliers = require('./Suppliers');
+const  UserAdmin = require ('./UserAdmin');
+const UserWaiter = require ('./UserWaiter');
 
 // Define the many-to-many relationship between Ingredients and Category
 Category.belongsToMany(Ingredients, { through: 'CategoryIngredients', foreignKey: 'category_id' });
@@ -15,4 +17,6 @@ module.exports = {
   Category,
   Ingredients,
   Suppliers,
+  UserAdmin,
+  UserWaiter,
 };
