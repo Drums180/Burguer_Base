@@ -33,6 +33,14 @@ Ingredients.init(
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
+    category_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'category',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,

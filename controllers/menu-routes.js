@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
 router.get('/burger/:num', async (req, res) => {
   console.log("get one burguer view", req)
   // This method renders the 'burger' template, and uses params to select the correct burger to render in the template, based on the id of the burger.
-   res.render('burger', hamburgers[req.params.num - 1]);
+   res.render('menu', hamburgers[req.params.num - 1]);
   //  return was deleted
 });
 
