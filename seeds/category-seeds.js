@@ -1,36 +1,34 @@
-const { Category } = require('./models');
+const { Category, Supplier } = require('../models');
 
 const categoryData = [
   {
     name: 'Bread',
-    ingredient_ids: [1],
+    supplier_id: 1,
   },
   {
     name: 'Vegetables',
-    ingredient_ids: [2, 6, 9, 10],
+    supplier_id: 2,
   },
   {
     name: 'Meat',
-    ingredient_ids: [3, 4],
+    supplier_id: 3,
   },
   {
     name: 'Dairy',
-    ingredient_ids: [5],
+    supplier_id: 1,
   },
   {
     name: 'Sauces',
-    ingredient_ids: [7, 11],
+    supplier_id: 4,
   },
   {
     name: 'Fruit',
-    ingredient_ids: [8],
+    supplier_id: 2,
   },
 ];
 
 const seedCategories = async () => {
-  await Category.bulkCreate(categoryData, {
-    include: 'ingredients',
-  });
+  await Category.bulkCreate(categoryData);
 };
 
 module.exports = seedCategories;

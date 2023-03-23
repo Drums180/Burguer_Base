@@ -26,7 +26,7 @@ app.use(session({
 }));
 
 // Routes
-const routes = require('./routes');
+const routes = require('./controllers/');
 app.use(routes);
 
 // Error handling middleware

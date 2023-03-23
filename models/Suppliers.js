@@ -1,6 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const Category = require('./Category');
 
 class Suppliers extends Model {}
 
@@ -16,16 +15,8 @@ Suppliers.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    supplying_category_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: Category,
-        key: 'id',
-      },
-    },
     cellphone: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     email: {
@@ -40,7 +31,7 @@ Suppliers.init(
       allowNull: false,
     },
     order_lead_time: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
@@ -49,7 +40,7 @@ Suppliers.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'suppliers',
+    modelName: 'supplier',
   }
 );
 
