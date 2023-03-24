@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
 const sequelize = require('./config/connection');
+// const helpers = require('./utils/helpers')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,12 +21,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// AUTHENTICATION PENDING
+// AUTHENTICATION SESSIONS
 const crypto = require('crypto');
 const secretKey = crypto.randomBytes(64).toString('hex');
 
 app.use(session({
-  secret: secretKey,
+  secret: 'Super secret secret',
   resave: false,
   saveUninitialized: false
 }));
@@ -41,6 +42,5 @@ app.use((err, req, res, next) => {
 });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+  app.listen(PORT, () => console.log(`App listening on port ${PORT}! Visit http://localhost:${PORT}`));
 });
-
