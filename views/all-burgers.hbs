@@ -4,46 +4,23 @@
         <textarea id="invGraph" ></textarea>
     <!-- Inventory graphs will end here  -->
 
-{{#each hamburgers}}
-
-  <h1>{{this.burger_name}}</h1>
-  <p>{{this.description}}</p>
-
-{{/each}}
-
-
 
        <!-- Menu start here -->
       <div id="menu">
         <h2>Menu</h2>
         <form id="orderForm" action="">
-          <div class="Burguer">
-            <span class="cheeseBurguer">Cheese Burguer</span>
-            <div class="menuBtn">
-            <input type="number" min="0" name="cheeseBurger" />
-              {{!-- <button value="decrease " class="decreaseBtn">-</button>
-              <span class="quantity">0</span>
-              <button value="increase" class="increaseBtn">+</button> --}}
+          {{#each hamburgers}}
+
+            <h3>{{this.burger_name}}</h3> 
+            <img src="{{this.photo}}" style="height: 250px; width: 300px;"></img>
+            <p>{{this.description}}</p>
+
+            <div class="Burguer">
+              <input type="number" min="0" name="cheeseBurger" />
             </div>
-          </div>
-          <div class="Burguer">
-            <span class="clasicBurguer">Clasic Burguer</span>
-            <div class="menuBtn">
-                <input type="number" min="0" name="classicBurger" />
-              {{!-- <button value="decrease" class="decreaseBtn">-</button>
-              <span class="quantity">0</span>
-              <button type="button" value="increase" class="increaseBtn">+</button> --}}
-            </div>
-          </div>
-          <div class="Burguer">
-            <span class="hawaiianBurguer">Hawaiian Burguer</span>
-            <div class="menuBtn">
-                <input type="number" min="0" name="hawaiianBurger" />
-              {{!-- <button value="decrease" class="decreaseBtn">-</button>
-              <span class="quantity">0</span>
-              <button value="increase" class="increaseBtn">+</button> --}}
-            </div>
-          </div>
+
+          {{/each}}
+         
             <!-- submit btn -->
             <button type="submit">Submit</button>
 
