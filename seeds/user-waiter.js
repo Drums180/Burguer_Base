@@ -9,7 +9,7 @@ const waiterData = [
 
     }
 ,
-    {g
+    {
         username: 'John',
     email: 'JohnWaiter@email.com',
     password: 'JohnTheWaiter',
