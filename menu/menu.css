@@ -1,70 +1,230 @@
+:root {
+  --firstColor: #5585b5;
+  --secondColor: #53a8b6;
+  --thirdColor: #79c2d0;
+  --fourthColor: #bbe4e9;
+  /* background-image: linear-gradient(var(--fourthColor), var(--firstColor)); */
+  font-size: 62.5%;
+  background-color: var(--thirdColor);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 5.4rem;
+  color: var(--firstColor);
+  margin-bottom: 5rem;
+}
+
+h1 > span {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 4.2rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  max-width: 80vw;
+  margin: 0 auto;
+  background: var(--fourthColor);
+}
+
+.container > * {
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+/* BUTTONS */
+
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 10rem;
+  text-align: center;
+  border: 0.1rem solid var(--secondColor);
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: var(--firstColor);
+  background-color: var(--fourthColor);
+  border-radius: 50px;
+}
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 var(--secondColor);
+  transform: translate(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+#graphArea {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 40%;
+  margin: auto;
+  border: 2px solid red;
+  overflow-y: auto;
+  z-index: 1;
+  background: var(--fourthColor);
+}
+
+.chartContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 30vh;
+  margin: 10px;
+  padding: 10px;
+  overflow-x: hidden;
+}
+
+#myChart {
+  width: 100%;
+  height: auto;
+}
+/* End of my changes */
+
 #menu {
-    display: flex;
-    flex-direction: column;
-    align-items:flex-start
-  }
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin: 50px auto;
+  align-items: center;
+  margin-top: 50px;
+  border: 2px solid red;
+}
+
+.burger-item {
+  display: flex;
+  width: 90%;
+  height: 200px;
+  margin: 10px auto;
+  border: 2px solid black;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.burger-name {
+  justify-self: flex-start;
+}
+
+.menuBtn {
+  justify-self: flex-end;
+}
+
+.menuBtn span {
+  width: 250px;
+  height: auto;
   
-  .Burguer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .Burguer img {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-  }
-  
-  .Burguer span {
-    font-size: 20px;
-  }
-  
-  .menuBtn {
-    display: flex;
-    align-items: center;
-  }
-  
-  .quantity {
-    display: inline-block;
-    font-size: 20px;
-    width: 40px;
-    text-align: center;
-    margin: 0 10px;
-  }
-  
-  .increaseBtn, .decreaseBtn {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: none;
-    background-color: #5585b5;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .increaseBtn:hover, .decreaseBtn:hover {
-    background-color: #293e54;
-  }
-  
-  /* Submit buttons */
-  #submit {
-    text-align: left;
-    margin-top: 20px;
-  }
-  
-  button[type="submit"] {
-    font-size: 24px;
-    padding: 10px 30px;
-    border: none;
-    background-color: #5585b5;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #293e54;
-  }
-  
+  margin: 10px;
+  border: 1px solid black;
+}
+/* 
+.Burguer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.Burguer img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.Burguer span {
+  font-size: 20px;
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+}
+
+.quantity {
+  display: inline-block;
+  font-size: 20px;
+  width: 40px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.increaseBtn,
+.decreaseBtn {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: var(--firstColor);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.increaseBtn:hover,
+.decreaseBtn:hover {
+  background-color: var(--secondColor);
+}
+/* 
+/* Submit buttons */
+/* #submit {
+  text-align: left;
+  margin-top: 20px;
+}
+*/
+button[type="submit"] {
+  font-size: 24px;
+  padding: 10px 30px;
+  border: none;
+  background-color: var(--firstColor);
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--firstColor);
+}
