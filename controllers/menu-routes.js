@@ -5,7 +5,7 @@ const hamburgers = [
   {
     burger_name: 'Cheese Burger',
     description: 'Burger with cheese, lettuce, tomato, and onion',
-    photo: '../assets/cheese.jpg',
+    photo: '/assets/cheese.jpg',
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -20,7 +20,7 @@ const hamburgers = [
   {
     burger_name: 'Classic Burger',
     description: 'Burger with lettuce, tomato, and onion',
-    photo: '../assets/classic.jpg',
+    photo: '/assets/classic.jpg',
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -34,7 +34,7 @@ const hamburgers = [
   {
     burger_name: 'Hawaiian Burger',
     description: 'Burger with pineapple, lettuce, tomato, and onion',
-    photo: '../assets/hawaiian.jpg',
+    photo: '/assets/hawaiian.jpg',
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -50,16 +50,16 @@ const hamburgers = [
 
 //get all burgers
 router.get('/', async (req, res) => {
-  console.log("get all burguers view", req)
-  res.render('all-burgers', { hamburgers });
-// falta sacar todos los platillos o hamburguesas para mandarselo al template
+  console.log('get all burguers view', req);
+  res.render('menu', { hamburgers });
+  // falta sacar todos los platillos o hamburguesas para mandarselo al template
 });
 
 //get one burger
 router.get('/burger/:num', async (req, res) => {
-  console.log("get one burguer view", req)
+  console.log('get one burguer view', req);
   // This method renders the 'burger' template, and uses params to select the correct burger to render in the template, based on the id of the burger.
-   res.render('menu', hamburgers[req.params.num - 1]);
+  res.render('menu', hamburgers[req.params.num - 1]);
   //  return was deleted
 });
 

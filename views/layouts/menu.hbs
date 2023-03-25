@@ -1,50 +1,32 @@
+<!-- Inventory graphs start here  -->
+<div id="inventory" class="inventory--dv">
+    <h2>Inventory</h2>
+    <textarea id="invGraph" ></textarea>
+</div>
+<!-- Inventory graphs will end here  -->
 
-    <!-- Inventory graphs start here  -->
-    <div id="inventory">
-        <h2>Inventory</h2>
-        <textarea id="invGraph" ></textarea>
-    <!-- Inventory graphs will end here  -->
 
+  <!-- Menu start here -->
+<div id="menu">
+  <h2>Menu</h2>
+  <form id="orderForm" action="">
+    {{#each hamburgers as |burger| }}
+      <h3>{{burger.burger}}</h3> 
+      <img src="{{burger.photo}}" style="height: 250px; width: 280px px;"></img>
+      <p>{{burger.description}}</p>
 
-       <!-- Menu start here -->
-      <div id="menu">
-        <h2>Menu</h2>
-        <form method="post">
-          <div class="Burguer">
-            <span class="cheeseBurguer">Cheese Burguer</span>
-            <div class="menuBtn">
-              <button value="decrease " class="decreaseBtn">-</button>
-              <span class="quantity">0</span>
-              <button value="increase" class="increaseBtn">+</button>
-            </div>
-          </div>
-          <div class="Burguer">
-            <span class="clasicBurguer">Clasic Burguer</span>
-            <div class="menuBtn">
-              <button value="decrease" class="decreaseBtn">-</button>
-              <span class="quantity">0</span>
-              <button value="increase" class="increaseBtn">+</button>
-            </div>
-          </div>
-          <div class="Burguer">
-            <span class="hawaiianBurguer">Hawaiian Burguer</span>
-            <div class="menuBtn">
-              <button value="decrease" class="decreaseBtn">-</button>
-              <span class="quantity">0</span>
-              <button value="increase" class="increaseBtn">+</button>
-            </div>
-          </div>
-            <!-- submit btn -->
-      <button type="submit">Submit</button>
-
-        </form>
-
+      <div class="Burger">
+        <input type="number" min="0" name="cheeseBurger" placeholder="Enter number of burgers desired" />
       </div>
+    {{/each}}
+      <!-- submit btn -->
+      <button type="submit">Submit</button>
+  </form>
 
+</div>
 
 
 <!-- Menu end here -->
-
-<script src="../public/js/menu.js"></script>
+<script src="public/js/menu.js"></script>
     
 
