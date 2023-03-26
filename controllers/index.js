@@ -4,7 +4,8 @@ const apiRoutes = require('./api');
 const menuRoutes = require('./menu-routes');
 const orderRoutes = require('./order-routes');
 
-router.use('/', menuRoutes);
+
+router.use('/menu', menuRoutes);
 router.use('/', orderRoutes);
 router.use('/api', apiRoutes);
 

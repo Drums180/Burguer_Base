@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
 const sequelize = require('./config/connection');
+const routes = require('./controllers');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,7 +28,7 @@ app.use(session({
 }));
 
 // Routes
-const routes = require('./controllers/');
+
 app.use(routes);
 
 // Error handling middleware
