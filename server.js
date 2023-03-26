@@ -4,25 +4,32 @@ const path = require('path');
 const session = require('express-session');
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
+=======
+// const helpers = require('./utils/helpers')
+>>>>>>> main
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+  defaultLayout: 'main',
+  extname: 'hbs'
+});
 
 // Middleware
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
+app.set('views',  path.join(__dirname, '/views'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
-// AUTHENTICATION PENDING
+// AUTHENTICATION SESSIONS
 const crypto = require('crypto');
 const secretKey = crypto.randomBytes(64).toString('hex');
 
 app.use(session({
-  secret: secretKey,
+  secret: 'Super secret secret',
   resave: false,
   saveUninitialized: false
 }));
@@ -38,6 +45,5 @@ app.use((err, req, res, next) => {
 });
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
+  app.listen(PORT, () => console.log(`App listening on port ${PORT}! Visit http://localhost:${PORT}`));
 });
-
