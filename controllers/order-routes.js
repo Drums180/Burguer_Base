@@ -2,6 +2,21 @@ const router = require('express').Router();
 const { Ingredients, Category, Suppliers } = require('../models');
 
 
+router.post('/', async (req, res) => {
+  try {
+    // Get the burger object from the request body
+    const body = req.body;
+    console.log(body);
+    // const resp = await application.createOrder();
+    // Send a success response
+    const order = await Ingredients.create(body);
+    res.redirect(`orders/${order.id}`)
+
+  } catch (err) {
+    // Send an error response if there's an error
+    res.status(500).json(err);
+  }
+});
 
 router.get('/', async (req, res) => {
   try {
@@ -15,10 +30,9 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.get('/login', (req, res) => {
-res.render('login')
 
-}),
-
+router.get('/:id', async(req, res) => {
+  res.render('order', { id: 1, items: [] })
+})
 
 module.exports = router;
