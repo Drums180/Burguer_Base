@@ -10,6 +10,95 @@ async function fetchHamburgers() {
   return hamburgers;
 }
 
+
+// TODO: Graph inclusion
+async function fetchIngredientsData() {
+  const response = await fetch('/api/ingredients');
+  const ingredientsData = await response.json();
+
+  console.log('ingredientsData:', ingredientsData);
+
+  const updatedInventory = {};
+
+  ingredientsData.forEach((ingredient) => {
+    updatedInventory[ingredient.name] = {
+      name: ingredient.name,
+      unit: ingredient.stock,
+      ideal: 100,
+    };
+  });
+
+  console.log('updatedInventory:', updatedInventory);
+
+  return updatedInventory;
+}
+
+function inventoryColors(item) {
+  if (item.unit < item.ideal * 0.5) {
+    return "rgb(250,200,0)";
+  } else if (item.unit < item.ideal * 0.25) {
+    return "rgb(250,0,0)";
+  } else {
+    return "rgb(100,255,50)";
+  }
+}
+
+async function updateGraph() {
+  const inventory = await fetchIngredientsData();
+
+  const dataPoints = Object.values(inventory).map(item => {
+    return {
+      label: item.name,
+      y: parseFloat(item.unit),
+      color: inventoryColors(item)
+    }
+  });
+
+  console.log('dataPoints:', dataPoints);
+
+  var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "light2",
+    title: {
+      text: "Inventario",
+    },
+    subtitles: [
+      {
+        text: "En kilos",
+        fontSize: 16,
+      },
+    ],
+    axisY: {
+      suffix: "kg",
+      scaleBreaks: {
+        customBreaks: [
+          {
+            startValue: 0,
+            endValue: 50,
+          },
+        ],
+      },
+    },
+    data: [
+      {
+        type: "column",
+        yValueFormatString: "$#,##0.00",
+        dataPoints: Object.keys(inventory).map((key) => {
+          const ingredient = inventory[key];
+          return {
+            label: ingredient.name,
+            y: ingredient.unit,
+            color: inventoryColors(ingredient),
+          };
+        }),
+      },
+    ],
+  });
+  chart.render();
+}
+
+window.addEventListener('load', updateGraph);
+
 // Function to fetch the burger object from the burger routes
 const getBurger = async (burgerName) => {
   try {

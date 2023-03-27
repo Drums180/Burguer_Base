@@ -42,6 +42,24 @@ router.get('/name/:name', async (req, res) => {
   }
 });
 
+// Update the stock for ingredients based on ordered burgers
+router.put('/', async (req, res) => {
+  try {
+    // Get the ingredients object from the request body
+    const ingredients = req.body;
+
+    // Call the updateStock method on the Ingredients model to update the stock
+    await Ingredients.updateStock(ingredients);
+
+    // Send a success response
+    res.status(200).json({ message: 'Ingredients stock updated successfully.' });
+  } catch (err) {
+  // Send an error response if there's an error
+  res.status(500).json(err);
+}
+});
+
+
 // Update the stock for a specific ingredient
 router.put('/name/:name', async (req, res) => {
   try {
