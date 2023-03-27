@@ -67,8 +67,15 @@ router.get('/api/hamburgers/:name', (req, res) => {
 
 //get all menu
 router.get('/menu', async (req, res) => {
+  if (req.session.loggedIn) {
   console.log('get all burgers view', req);
   res.render('menu', { hamburgers });
+}
+  else {
+    res.redirect('/')
+
+  }
+
 });
 
 router.get('/menu/:id', async (req, res) => {
@@ -90,5 +97,9 @@ router.get('/order', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/*', async (req, res) =>{
+  res.render('login')
+})
 
 module.exports = router;
