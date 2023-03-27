@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Ingredients } = require('../../models');
 
 // Get all ingredients
-router.get('/ingredients', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const ingredients = await Ingredients.findAll();
     res.json(ingredients);
@@ -13,7 +13,7 @@ router.get('/ingredients', async (req, res) => {
 });
 
 // Get a single ingredient by id
-router.get('/ingredients/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const ingredient = await Ingredients.findByPk(id);
@@ -27,13 +27,14 @@ router.get('/ingredients/:id', async (req, res) => {
   }
 });
 
+// Update the stock for a specific ingredient
 router.put('/', async (req, res) => {
   try {
-    // Get the burger object from the request body
-    const { burger } = req.body;
+    // Get the ingredients object from the request body
+    const ingredients = req.body;
 
     // Call the updateStock method on the Ingredients model to update the stock
-    await Ingredients.updateStock(burger.ingredients);
+    await Ingredients.updateStock(ingredients);
 
     // Send a success response
     res.status(200).json({ message: 'Ingredients stock updated successfully.' });
@@ -42,5 +43,6 @@ router.put('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;
