@@ -51,16 +51,18 @@ Ingredients.init(
   }
 );
 
- // Subtract the quantity used in the burger from the stock
+// Subtract the quantity used in the burger from the stock
 Ingredients.updateStock = async function(ingredients) {
   await Promise.all(Object.entries(ingredients).map(async ([key, value]) => {
     const ingredient = await Ingredients.findOne({
       where: { name: key }
     });
-    
-    ingredient.stock -= value;
-    await ingredient.save();
+
+    if (ingredient) {
+      ingredient.stock -= value;
+      await ingredient.save();
+    }
   }));
-}
+};
 
 module.exports = Ingredients;
