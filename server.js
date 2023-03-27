@@ -5,6 +5,11 @@ const session = require('express-session');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
+const helpers = require('./utils/helpers');
+
+// Require custom Handlebars helpers
+require('./utils/helpers');
+
 // Set up sessions with cookies
 const sess = {
   secret: 'Super secret secret',
@@ -20,13 +25,14 @@ const sess = {
 };
 
 app.use(session(sess));
-// const helpers = require('./utils/helpers')
 
 const PORT = process.env.PORT || 3001;
 
+// Helpers and hbd
 const hbs = exphbs.create({
   defaultLayout: 'main',
-  extname: 'hbs'
+  extname: 'hbs',
+  helpers: helpers,
 });
 
 // Middleware
@@ -44,7 +50,12 @@ app.use(routes);
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send(`Something broke! Error: ${err.message}`);
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Internal Server Error');
 });
 
 sequelize.sync({ force: false }).then(() => {

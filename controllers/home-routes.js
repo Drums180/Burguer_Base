@@ -6,6 +6,8 @@ const hamburgers = [
   {
     burger_name: 'Cheese Burger',
     description: 'Burger with cheese, lettuce, tomato, and onion',
+    photo:"../public/assets/cheese.jpg",
+    id: 1,
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -20,6 +22,8 @@ const hamburgers = [
   {
     burger_name: 'Classic Burger',
     description: 'Burger with lettuce, tomato, and onion',
+    photo:"../public/assets/classic.jpg",
+    id: 2,
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -33,6 +37,8 @@ const hamburgers = [
   {
     burger_name: 'Hawaiian Burger',
     description: 'Burger with pineapple, lettuce, tomato, and onion',
+    photo:"../public/assets/hawaiian.jpg",
+    id: 3,
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -87,19 +93,17 @@ router.get('/menu/:id', async (req, res) => {
 
 router.get('/order', async (req, res) => {
   try {
-    const ingredients = await Ingredients.findAll();
-    const categories = await Category.findAll();
-    const suppliers = await Suppliers.findAll();
+    const ingredientData = await Ingredients.findAll();
+    const ingredients = ingredientData.map((ingredient) => ingredient.get({ plain: true }));
 
-    res.render('orders', { ingredients, categories, suppliers });
+    // Pass the ingredients to the orders template
+    res.render('order', { ingredients });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/*', async (req, res) =>{
-  res.render('login')
-})
+
 
 module.exports = router;
