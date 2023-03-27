@@ -82,7 +82,20 @@ router.get('/menu', async (req, res) => {
 
   }
 
+  
+  
 });
+//get all order
+router.get('/order', async (req, res) => {
+  if (req.session.loggedIn) {
+  console.log('working', req);
+  res.render('order', { hamburgers });
+}
+  else {
+    res.redirect('/')
+  }
+});
+
 
 router.get('/menu/:id', async (req, res) => {
   console.log('get one burger view', req);
