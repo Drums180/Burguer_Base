@@ -46,6 +46,10 @@ const hamburgers = [
   },
 ];
 
+router.get('/', async (req, res) => {
+  console.log('view log in', req);
+  res.render('login');
+});
 //get all burgers
 router.get('/menu', async (req, res) => {
   console.log('get all burgers view', req);
