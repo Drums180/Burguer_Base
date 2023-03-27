@@ -1,70 +1,132 @@
-#menu {
+  /* Inventory section */
+  #inventory {
+    text-align: center;
+    background: #79c2d0;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+
+  #inventory h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #5585b5;
+  }
+
+  #invGraph {
+    width: 100%;
+    height: 300px;
+    resize: none;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #333;
+  }
+
+  /* Menu section */
+  #menu {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+    background: #bbe4e9;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+  }
+
+  #menu h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #5585b5;
+  }
+
+  #orderForm {
     display: flex;
     flex-direction: column;
-    align-items:flex-start
   }
-  
-  .Burguer {
+
+  .Burger {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
     margin-bottom: 20px;
   }
-  
-  .Burguer img {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
+
+  .Burger input[type=number] {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #333;
   }
-  
-  .Burguer span {
-    font-size: 20px;
+
+  .Burger input[type=number]:focus {
+    outline: none;
   }
-  
-  .menuBtn {
+
+  #orderForm button[type=submit] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+    background: #5585b5;
+    color: #fff;
+  }
+
+  #orderForm button[type=submit]:hover {
+    background: #79c2d0;
+  }
+
+
+  .menu-item {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
   }
-  
-  .quantity {
-    display: inline-block;
-    font-size: 20px;
-    width: 40px;
-    text-align: center;
-    margin: 0 10px;
+
+  .menu-item img {
+    width: 280px;
+    height: 250px;
+    margin-right: 20px;
   }
-  
-  .increaseBtn, .decreaseBtn {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: none;
-    background-color: #5585b5;
-    font-size: 20px;
-    cursor: pointer;
+
+  .menu-item .burger-info {
+    display: flex;
+    flex-direction: column;
   }
-  
-  .increaseBtn:hover, .decreaseBtn:hover {
-    background-color: #293e54;
+
+  .menu-item h3 {
+    margin: 0 0 10px 0;
+    color: #333;
   }
-  
-  /* Submit buttons */
-  #submit {
-    text-align: left;
-    margin-top: 20px;
+
+  .menu-item p {
+    margin: 0 0 20px 0;
+    color: #777;
   }
-  
-  button[type="submit"] {
-    font-size: 24px;
-    padding: 10px 30px;
-    border: none;
-    background-color: #5585b5;
-    color: #fff;
-    cursor: pointer;
+
+  .menu-item input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #333;
   }
-  
-  button[type="submit"]:hover {
-    background-color: #293e54;
-  }
-  
+
+  /*
