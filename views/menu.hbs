@@ -1,0 +1,32 @@
+<!-- Inventory graphs start here  -->
+<div id="inventory" class="inventory--dv">
+    <h2>Inventory</h2>
+    <textarea id="invGraph" ></textarea>
+</div>
+<!-- Inventory graphs will end here  -->
+
+
+  <!-- Menu start here -->
+<div id="menu">
+  <h2>Menu</h2>
+  <form id="orderForm" action="">
+    {{#each hamburgers as |burger| }}
+      <h3>{{burger.burger}}</h3> 
+      <img src="{{burger.photo}}" style="height: 250px; width: 280px px;"></img>
+      <p>{{burger.description}}</p>
+
+      <div class="Burger">
+        <input type="number" min="0" name="cheeseBurger" placeholder="Enter number of burgers desired" />
+      </div>
+    {{/each}}
+      <!-- submit btn -->
+      <button type="submit">Submit</button>
+  </form>
+
+</div>
+
+
+<!-- Menu end here -->
+<script src="public/js/menu.js"></script>
+    
+

@@ -2,6 +2,18 @@
 const increaseBtns = document.querySelectorAll(".increaseBtn");
 const decreaseBtns = document.querySelectorAll(".decreaseBtn");
 const quantities = document.querySelectorAll(".quantity");
+const orderForm = document.getElementById('orderForm')
+const submitBtn = document.querySelector('form button');
+console.log(submitBtn);
+
+
+orderForm.onsubmit = async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const entries = Object.fromEntries(formData.entries())
+  const order = await fetch('api/orders', { method: 'POST', body: entries })
+  console.log(e);
+}
 
 // Event listener to increase/decrease orders
 increaseBtns.forEach((btn, index) => {
@@ -9,7 +21,7 @@ increaseBtns.forEach((btn, index) => {
     quantities[index].innerText = parseInt(quantities[index].innerText) + 1;
   });
 });
-a
+
 decreaseBtns.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     if (parseInt(quantities[index].innerText) > 0) {
@@ -35,13 +47,24 @@ const getBurger = async (burgerId) => {
 // Function to know the total order of burgers into an array
 const getBurgersOrdered = () => {
   const burgersOrdered = [];
+
   quantities.forEach((quantity, index) => {
     const numOrdered = parseInt(quantity.innerText);
-    if (numOrdered > 0) {
-      const burger = hamburgers[index];
-      burgersOrdered.push({ ...burger, quantity: numOrdered, id: index + 1 });
+    if (numOrdered) {
+      //const burger = hamburgers[index];
+      //burgersOrdered.push({ ...burger, quantity: numOrdered, id: index + 1 });
+      burgersOrdered.push({ id: index + 1, quantity: numOrdered });
     }
   });
+
+
+    // send HTTP PUT fetch request to /api/ingredients
+    fetch('/api/ingredients', {
+      // you need to configure the options parameters here
+      // set the method to put, stringify the body, etc
+      // the body will have the burgersOrdered array
+    })
+
   return burgersOrdered;
 };
 
