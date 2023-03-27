@@ -6,6 +6,8 @@ const hamburgers = [
   {
     burger_name: 'Cheese Burger',
     description: 'Burger with cheese, lettuce, tomato, and onion',
+    photo:"../public/assets/cheese.jpg",
+    id: 1,
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -20,6 +22,8 @@ const hamburgers = [
   {
     burger_name: 'Classic Burger',
     description: 'Burger with lettuce, tomato, and onion',
+    photo:"../public/assets/classic.jpg",
+    id: 2,
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -33,6 +37,8 @@ const hamburgers = [
   {
     burger_name: 'Hawaiian Burger',
     description: 'Burger with pineapple, lettuce, tomato, and onion',
+    photo:"../public/assets/hawaiian.jpg",
+    id: 3,
     ingredients: {
       bread: 0.2,
       meat: 0.2,
@@ -50,13 +56,34 @@ router.get('/', async (req, res) => {
   console.log('view log in', req);
   res.render('login');
 });
-//get all burgers
-router.get('/menu', async (req, res) => {
-  console.log('get all burgers view', req);
-  res.render('menu', { data: hamburgers });
+
+// Endpoint to get the hamburgers array
+router.get('/api/hamburgers', (req, res) => {
+  res.json(hamburgers);
 });
 
-//get one burger
+router.get('/api/hamburgers/:name', (req, res) => {
+  const burger = hamburgers.find(b => b.burger_name === req.params.name);
+  if (burger) {
+    res.json(burger);
+  } else {
+    res.status(404).json({ message: 'Burger not found' });
+  }
+});
+
+//get all menu
+router.get('/menu', async (req, res) => {
+  if (req.session.loggedIn) {
+  console.log('get all burgers view', req);
+  res.render('menu', { hamburgers });
+}
+  else {
+    res.redirect('/')
+
+  }
+
+});
+
 router.get('/menu/:id', async (req, res) => {
   console.log('get one burger view', req);
   // This method renders the 'burger' template, and uses params to select the correct burger to render in the template, based on the id of the burger.
@@ -66,15 +93,17 @@ router.get('/menu/:id', async (req, res) => {
 
 router.get('/order', async (req, res) => {
   try {
-    const ingredients = await Ingredients.findAll();
-    const categories = await Category.findAll();
-    const suppliers = await Suppliers.findAll();
+    const ingredientData = await Ingredients.findAll();
+    const ingredients = ingredientData.map((ingredient) => ingredient.get({ plain: true }));
 
-    res.render('orders', { ingredients, categories, suppliers });
+    // Pass the ingredients to the orders template
+    res.render('order', { ingredients });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+
 
 module.exports = router;

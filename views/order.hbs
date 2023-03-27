@@ -1,0 +1,29 @@
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Order Ingredients</h1>
+      <form id="order-form">
+        <div class="columns is-multiline">
+          {{#each ingredients}}
+            <div class="column is-one-third">
+              <div class="box card">
+                <h3>
+                  <i class="fas fa-utensils"></i>
+                  {{capitalizeFirstLetter this.name}}
+                </h3>
+                <p>Current Stock: {{this.stock}}</p>
+                <p>Desired Stock: 100</p>
+                <p>Order Quantity: <span class="order-quantity"><span>{{subtract 100 this.stock}}</span></span></p>
+                <button class="button is-link order-button" data-id="{{this.id}}">Order Now</button>
+                <button class="button is-success order-received-button is-hidden" data-id="{{this.id}}"><i class="fas fa-check"></i> Order Received</button>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        <div id="order-received-container"></div>
+        <button id="order-received-button" class="button is-hidden">Order Received</button>
+      </form>
+    </div>
+  </section>
+  <script src="public/js/order.js"></script>
+</body>
