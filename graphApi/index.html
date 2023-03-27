@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="graph.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Inventory graphs start here  -->
+      <div id="graphArea">
+        <h1>Inventory</h1>
+        <div id="chartContainer" class="chartContainer">
+          <!-- <canvas id="myChart"></canvas> -->
+        </div>
+      </div>
+      <!-- Inventory graphs will end here  -->
+
+      <!-- Menu starts here -->
+      <div id="menu">
+        <h2>Menu</h2>
+        <div class="burger-item">
+          <h3 class="burger-name">Cheese Burger</h3>
+          <div class="menuBtn">
+            <button class="decreaseBtn btn">-</button>
+            <span class="quantity">0</span>
+            <button class="increaseBtn btn">+</button>
+          </div>
+        </div>
+        <div class="burger-item">
+          <h3 class="burger-name">Classic Burger</h3>
+          <div class="menuBtn">
+            <button class="decreaseBtn btn">-</button>
+            <span class="quantity">0</span>
+            <button class="increaseBtn btn">+</button>
+          </div>
+        </div>
+        <div class="burger-item">
+          <h3 class="burger-name">Hawaiian Burger</h3>
+          <div class="menuBtn">
+            <button class="decreaseBtn btn">-</button>
+            <span class="quantity">0</span>
+            <button class="increaseBtn btn">+</button>
+          </div>
+        </div>
+      </div>
+      <!-- Menu end here -->
+
+      <!-- Submit button start here -->
+      <div id="submit">
+        <button type="submit" class="btn">Submit</button>
+      </div>
+      <!-- Submit button end here -->
+    </div>
+
+    <script src="./menu.js"></script>
+
+    <!-- graph API -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="graphApi.js"></script>
+
+    <!-- chart API -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../chartJS/chart.js"></script> -->
+  </body>
+</html>
