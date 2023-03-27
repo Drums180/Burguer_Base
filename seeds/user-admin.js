@@ -8,21 +8,21 @@ const adminData = [
     password: 'TomTheAdmin',
     },
     {
-        username: 'Walt',
-        email: 'WaltWaiter@email.com',
-        password: 'WaltTheWaiter',
+    username: 'Walt',
+    email: 'WaltWaiter@email.com',
+    password: 'WaltTheWaiter',
     
-        },
+    },
     
-        {
-            username: 'John',
-        email: 'JohnWaiter@email.com',
-        password: 'JohnTheWaiter',
+    {
+    username: 'John',
+    email: 'JohnWaiter@email.com',
+    password: 'JohnTheWaiter',
     
-        }
-    ,]
+    }
+,]
 
 
-const seedAdmin = () => UserAdmin.bulkCreate(wadminData);
+const seedAdmin = () => UserAdmin.bulkCreate(adminData);
 
 module.exports = seedAdmin;
