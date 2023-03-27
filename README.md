@@ -1,42 +1,52 @@
-# README File
+Readme 
 
-*Title* 
-Burger Base
-—
-*Introduction*
-This app wil connect 2 inventory databases. 
-When 1 product is too low, it will automatically take from the other one.
+# Burger Base
 
+Burger Base is a web-based application designed for Burger restaurants to manage their inventory. The app connects two inventory databases and allows for efficient inventory monitoring and management.
 
-It will feature 2  login access in total.
-For a Manager, and other for the waiters.
-Each user will have different privileges in this app. 
-Users without ID will still be able to see the databases and the graphics, but not modify it.
+## Features
 
-It will work for a Burger restaurant. 
-It will include fries, bread, meat, cheese, onion,  and tomatoes products in the databases.
+* Real-time inventory monitoring for critical ingredients such as fries, bread, meat, cheese, onion, and tomatoes etc.
 
-It will have a minimum requirement of each product for the Local Storage, once it’s too low, it will ask more 
-From the Main storage. 
+* Different login access for Managers and waiters, with different privileges in the app.
 
-*Tecnologies*
+* Automated restocking of inventory when it reaches low levels. (Note: please be aware that this feature is currently not working and will require manual restocking until further updates are made.)
 
-Node, MySQL, HTML, CSS, Javascript, . Maybe Tailwind, Bootstrap.
+* User-friendly interface for inventory management.
+Minimum requirement feature to ensure critical ingredients are always available.
 
+## Technologies
 
+Burger Base is built using the following technologies:
 
+* Node.js
+* MySQL
+* HTML
+* CSS
+* JavaScript
 
-// For Reference //
-Make sure the file always includes the following elements:
-* Titles and internal titles
-* Introduction - the project's aim
-* Technologies
-* Launch
-Consider also using additional elements such as: 
-* Table of contents
-* Illustrations
-* Scope of functionalities 
-* Examples of use
-* Project status 
-* Sources
-* Other information
+## How to use it
+
+To use Burger Base, please follow the instructions below:
+
+Install Node.js and MySQL on your computer if you haven't already.
+Clone this repository to your local machine.
+Navigate to the project directory and run the command npm install to install the necessary dependencies.
+Start the app by running the command npm start.
+Open a web browser and navigate to http://localhost:3000 to access the Burger Base app.
+Log in with your username and password.
+Contributing
+If you would like to contribute to Burger Base, please follow these guidelines:
+
+Fork the repository.
+Create a new branch for your changes.
+Make your changes and commit them with clear commit messages.
+Push your changes to your forked repository.
+Submit a pull request to the main repository.
+License
+Burger Base is licensed under the MIT License.
+
+Contact
+If you have any questions or issues, please contact the developer at [insert email address here].
+
+Note: As mentioned in the features section, the automated restocking feature is currently not working and will require manual restocking until further updates are made. We apologize for any inconvenience this may cause.

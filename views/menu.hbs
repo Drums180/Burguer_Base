@@ -1,26 +1,36 @@
 <!-- Inventory graphs start here  -->
-<div id="inventory" class="inventory--dv">
+<div id='inventory' class='inventory--dv'>
   <h2>Inventory</h2>
-  <textarea id="invGraph" ></textarea>
+  <textarea id='invGraph'></textarea>
 </div>
 <!-- Inventory graphs will end here  -->
 
-<!-- Menu start here -->
-<div id="menu">
+<div id='menu'>
   <h2>Menu</h2>
-  <form id="orderForm" action="">
-    {{#each hamburgers }}
-      <h3>{{this.burger_name}}</h3> 
-      <img src="{{this.photo}}" style="height: 250px; width: 280px;"></img>
-      <p>{{this.description}}</p>
-      <div class="Burger">
-        <input type="number" min="0" name="{{this.burger_name}}" placeholder="Enter number of burgers desired" data-index="{{@index}}" />
+  <form id='orderForm' action=''>
+    {{#each hamburgers}}
+      <div class='menu-item'>
+        <img src='{{this.photo}}' />
+        <div class='burger-info'>
+          <h3>{{this.burger_name}}</h3>
+          <p>{{this.description}}</p>
+          <div class='Burger'>
+            <input
+              type='number'
+              min='0'
+              name='{{this.burger_name}}'
+              placeholder='Burguers'
+              data-index='{{@index}}'
+            />
+          </div>
+        </div>
       </div>
     {{/each}}
-      <!-- submit btn -->
-      <button type="submit">Submit</button>
+    <!-- submit btn -->
+    <button type='submit'>Submit</button>
   </form>
 </div>
+
 <!-- Menu end here -->
 
-<script src="public/js/menu.js"></script>
+<script src='public/js/menu.js'></script>
