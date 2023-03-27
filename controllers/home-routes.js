@@ -50,13 +50,31 @@ router.get('/', async (req, res) => {
   console.log('view log in', req);
   res.render('login');
 });
-//get all burgers
-router.get('/menu', async (req, res) => {
-  console.log('get all burgers view', req);
-  res.render('menu', { data: hamburgers });
+
+// Endpoint to get the hamburgers array
+router.get('/api/hamburgers', (req, res) => {
+  res.json(hamburgers);
 });
 
-//get one burger
+router.get('/api/hamburgers/:name', (req, res) => {
+  const burger = hamburgers.find((b) => b.burger_name === req.params.name);
+  if (burger) {
+    res.json(burger);
+  } else {
+    res.status(404).json({ message: 'Burger not found' });
+  }
+});
+
+//get all menu
+router.get('/menu', async (req, res) => {
+  if (req.session.loggedIn) {
+    console.log('get all burgers view', req);
+    res.render('menu', { hamburgers });
+  } else {
+    res.redirect('/');
+  }
+});
+
 router.get('/menu/:id', async (req, res) => {
   console.log('get one burger view', req);
   // This method renders the 'burger' template, and uses params to select the correct burger to render in the template, based on the id of the burger.
@@ -75,6 +93,10 @@ router.get('/order', async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+router.get('/*', async (req, res) => {
+  res.render('login');
 });
 
 module.exports = router;
