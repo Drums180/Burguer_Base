@@ -6,8 +6,21 @@ const adminData = [
     username: 'TomAdmin',
     email: 'TomAdmin@email.com',
     password: 'TomTheAdmin',
-
-},]
+    },
+    {
+        username: 'Walt',
+        email: 'WaltWaiter@email.com',
+        password: 'WaltTheWaiter',
+    
+        },
+    
+        {
+            username: 'John',
+        email: 'JohnWaiter@email.com',
+        password: 'JohnTheWaiter',
+    
+        }
+    ,]
 
 
 const seedAdmin = () => UserAdmin.bulkCreate(wadminData);
