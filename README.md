@@ -32,7 +32,7 @@ Make sure the file always includes the following elements:
 * Introduction - the project's aim
 * Technologies
 * Launch
- Consider also using additional elements such as: 
+Consider also using additional elements such as: 
 * Table of contents
 * Illustrations
 * Scope of functionalities 

@@ -1,3 +1,4 @@
+/*
 const router = require('express').Router();
 const { Ingredients, Category, Suppliers } = require('../models');
 
@@ -36,3 +37,4 @@ router.get('/:id', async(req, res) => {
 })
 
 module.exports = router;
+*/

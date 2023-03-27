@@ -6,6 +6,7 @@ class UserAdmin extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
+
 }
 
 UserAdmin.init(
@@ -34,7 +35,7 @@ UserAdmin.init(
       validate: {
         len: [6],
       },
-    },
+    }, 
   },
   {
     hooks: {
