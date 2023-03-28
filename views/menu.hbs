@@ -1,42 +1,52 @@
 <!-- Inventory graphs start here  -->
-
-<button class='btn btn-primary' id='logout'>logout</button>
-<div id='inventory' class='inventory--dv'>
-  <h2>Inventory</h2>
-
-  <div id='chartContainer' style='height: 370px; width: 100%;'></div>
-
-</div>
+<section class="section">
+  <div class="container">
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+  </div>
+</section>
 <!-- Inventory graphs will end here  -->
 
-<div id='menu'>
-  <h2>Menu</h2>
-  <form id='orderForm' action=''>
-    {{#each hamburgers}}
-      <div class='menu-item'>
-        <img src='{{this.photo}}' />
-        <div class='burger-info'>
-          <h3>{{this.burger_name}}</h3>
-          <p>{{this.description}}</p>
-          <div class='Burger'>
-            <input
-              type='number'
-              min='0'
-              name='{{this.burger_name}}'
-              placeholder='Burguers'
-              data-index='{{@index}}'
-            />
+<!-- Menu start here -->
+<section class="section">
+  <div class="container">
+    <h2 class="title">Menu</h2>
+    <form id="orderForm" action="">
+      <div class="columns is-multiline">
+        {{#each hamburgers}}
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="{{this.photo}}" alt="{{this.burger_name}}">
+                </figure>
+              </div>
+              <div class="card-content">
+                <h3 class="title is-4">{{this.burger_name}}</h3>
+                <p>{{this.description}}</p>
+                <div class="field">
+                  <input
+                    class="input"
+                    type="number"
+                    min="0"
+                    name="{{this.burger_name}}"
+                    placeholder="Burgers"
+                    data-index="{{@index}}"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        {{/each}}
       </div>
-    {{/each}}
-    <!-- submit btn -->
-    <button type='submit'>Submit</button>
-  </form>
-</div>
-
+      <!-- submit btn -->
+      <div class="field has-text-centered" style="margin-top: 1rem;">
+        <button class="button is-primary" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</section>
 <!-- Menu end here -->
 
-<script src='public/js/logout.js'></script>
+<script src="public/js/logout.js"></script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script src='public/js/menu.js'></script>
+<script src="public/js/menu.js"></script>

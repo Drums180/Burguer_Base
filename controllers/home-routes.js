@@ -9,14 +9,14 @@ const hamburgers = [
     photo:"../public/assets/cheese.jpg",
     id: 1,
     ingredients: {
-      bread: 0.2,
-      meat: 0.2,
-      cheese: 0.1,
-      lettuce: 0.05,
-      tomato: 0.05,
-      onion: 0.05,
-      ketchup: 0.02,
-      mayo: 0.02,
+      bread:2,
+      meat: 2,
+      cheese: 1,
+      lettuce: 5,
+      tomato: 5,
+      onion: 5,
+      ketchup: 2,
+      mayo: 2,
     },
   },
   {
@@ -25,13 +25,13 @@ const hamburgers = [
     photo:"../public/assets/classic.jpg",
     id: 2,
     ingredients: {
-      bread: 0.2,
-      meat: 0.2,
-      lettuce: 0.05,
-      tomato: 0.05,
-      onion: 0.05,
-      ketchup: 0.02,
-      mayo: 0.02,
+      bread: 2,
+      meat: 2,
+      lettuce: 5,
+      tomato: 5,
+      onion: 5,
+      ketchup: 2,
+      mayo: 2,
     },
   },
   {
@@ -40,14 +40,14 @@ const hamburgers = [
     photo:"../public/assets/hawaiian.jpg",
     id: 3,
     ingredients: {
-      bread: 0.2,
-      meat: 0.2,
-      pineapple: 0.1,
-      lettuce: 0.05,
-      tomato: 0.05,
-      onion: 0.05,
-      ketchup: 0.02,
-      mayo: 0.02,
+      bread: 2,
+      meat: 2,
+      pineapple: 1,
+      lettuce: 5,
+      tomato: 5,
+      onion: 5,
+      ketchup: 2,
+      mayo: 2,
     },
   },
 ];
@@ -80,22 +80,8 @@ router.get('/menu', async (req, res) => {
   else {
     res.redirect('/')
 
-  }
-
-  
-  
+  }  
 });
-//get all order
-router.get('/order', async (req, res) => {
-  if (req.session.loggedIn) {
-  console.log('working', req);
-  res.render('order', { hamburgers });
-}
-  else {
-    res.redirect('/')
-  }
-});
-
 
 router.get('/menu/:id', async (req, res) => {
   console.log('get one burger view', req);

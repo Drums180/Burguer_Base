@@ -10,3 +10,8 @@ module.exports = {
     return str.charAt(0).toUpperCase() + str.slice(1);
   },
 };
+
+Handlebars.registerHelper('toFixed', function(value, decimals) {
+  return parseFloat(value).toFixed(decimals);
+});
+

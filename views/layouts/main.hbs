@@ -15,5 +15,36 @@
     <title>Burguer Base</title>
 </head>
 <body>
+    <header class="header">
+        <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+            
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a id="logout" class="navbar-item" href="/">
+                        Log-out
+                    </a>
+
+                    <a class="navbar-item" href="/menu">
+                        Menu
+                    </a>
+
+                    <a class="navbar-item" href="/order">
+                        Order
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
     {{{body}}}
+
+    <script src="../public/js/app.js"></script>
 </body>
+</html>
