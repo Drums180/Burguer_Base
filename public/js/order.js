@@ -1,9 +1,8 @@
+const orderNowButtons = document.querySelectorAll('.order-button');
+const orderReceivedButtons = document.querySelectorAll('.order-received-button');
 
- const orderNowButtons = document.querySelectorAll('.order-button');
- const orderReceivedButtons = document.querySelectorAll('.order-received-button');
-
- // Loop through each Order Now button and update its functionality
- orderNowButtons.forEach((button) => {
+// Loop through each Order Now button and update its functionality
+orderNowButtons.forEach((button) => {
    button.addEventListener('click', (event) => {
      event.preventDefault();
 
@@ -39,10 +38,10 @@
        // Refresh the page
        location.reload();
      });
- });
+});
 
 
- async function updateIngredientStock(name, orderQuantity) {
+async function updateIngredientStock(name, orderQuantity) {
      try {
        const response = await fetch(`/api/ingredients/name/${name}`);
 

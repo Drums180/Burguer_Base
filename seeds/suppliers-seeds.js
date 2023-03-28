@@ -31,6 +31,8 @@ const supplierData = [
   },
 ];
 
-const seedSuppliers = () => Suppliers.bulkCreate(supplierData);
+const seedSuppliers = async () => {
+  await Suppliers.bulkCreate(supplierData);
+};
 
 module.exports = seedSuppliers;

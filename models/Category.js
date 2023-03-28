@@ -7,20 +7,12 @@ Category.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    supplier_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'supplier',
-        key: 'id',
-      },
     },
   },
   {
