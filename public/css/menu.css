@@ -1,7 +1,6 @@
   /* Inventory section */
   #inventory {
     text-align: center;
-    background: #79c2d0;
     padding: 30px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -72,25 +71,6 @@
   .Burger input[type=number]:focus {
     outline: none;
   }
-
-  #orderForm button[type=submit] {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 4px;
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
-    background: #5585b5;
-    color: #fff;
-  }
-
-  #orderForm button[type=submit]:hover {
-    background: #79c2d0;
-  }
-
 
   .menu-item {
     display: flex;

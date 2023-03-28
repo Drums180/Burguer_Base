@@ -24,7 +24,7 @@ async function fetchIngredientsData() {
     updatedInventory[ingredient.name] = {
       name: ingredient.name,
       unit: ingredient.stock,
-      ideal: 100,
+      ideal: 120,
     };
   });
 
@@ -49,55 +49,40 @@ async function updateGraph() {
   const dataPoints = Object.values(inventory).map(item => {
     return {
       label: item.name,
-      y: parseFloat(item.unit),
+      y: Math.max(parseFloat(item.unit), 0),
       color: inventoryColors(item)
     }
   });
-
+  
   console.log('dataPoints:', dataPoints);
 
   var chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     theme: "light2",
     title: {
-      text: "Inventario",
+      text: "Inventory",
     },
     subtitles: [
       {
-        text: "En kilos",
+        text: "In units",
         fontSize: 16,
       },
-    ],
+    ],    
     axisY: {
-      suffix: "kg",
+      suffix: "units",
       scaleBreaks: {
-        customBreaks: [
-          {
-            startValue: 0,
-            endValue: 50,
-          },
-        ],
       },
     },
     data: [
       {
         type: "column",
-        yValueFormatString: "$#,##0.00",
-        dataPoints: Object.keys(inventory).map((key) => {
-          const ingredient = inventory[key];
-          return {
-            label: ingredient.name,
-            y: ingredient.unit,
-            color: inventoryColors(ingredient),
-          };
-        }),
+        yValueFormatString: "#,##0.00",
+        dataPoints: dataPoints,
       },
-    ],
+    ],       
   });
   chart.render();
 }
-
-window.addEventListener('load', updateGraph);
 
 // Function to fetch the burger object from the burger routes
 const getBurger = async (burgerName) => {
@@ -169,6 +154,8 @@ const handleSubmit = async (hamburgers) => {
   const response = await fetch('/api/ingredients');
   const data = await response.json();
   console.log(data);
+
+  updateGraph()
 };
   
 submitBtn.addEventListener("click", async (event) => {
@@ -196,3 +183,5 @@ decreaseBtns.forEach((btn, index) => {
     }
   });
 });
+
+window.addEventListener('load', updateGraph);
