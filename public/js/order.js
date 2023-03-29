@@ -42,30 +42,32 @@ orderNowButtons.forEach((button) => {
 
 
 async function updateIngredientStock(name, orderQuantity) {
-     try {
-       const response = await fetch(`/api/ingredients/name/${name}`);
+  try {
+    const response = await fetch(`/api/ingredients/name/${name}`);
 
-       if (!response.ok) {
-         throw new Error(`Error fetching ingredient with name ${name}: ${response.status} - ${response.statusText}`);
-       }
+    if (!response.ok) {
+      throw new Error(`Error fetching ingredient with name ${name}: ${response.status} - ${response.statusText}`);
+    }
 
-       const ingredient = await response.json();
+    const ingredient = await response.json();
 
-       const newStock = ingredient.stock + parseInt(orderQuantity);
-       const updateResponse = await fetch(`/api/ingredients/name/${name}`, {
-         method: 'PUT',
-         headers: {
-           'Content-Type': 'application/json'
-         },
-         body: JSON.stringify({ stock: newStock })
-       });
+    const newStock = parseFloat(ingredient.stock) + parseFloat(orderQuantity); // Use + instead of -
+    const updateResponse = await fetch(`/api/ingredients/name/${name}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ stock: newStock })
+    });
 
-       if (!updateResponse.ok) {
-         throw new Error(`Error updating ingredient with name ${name}: ${updateResponse.status} - ${updateResponse.statusText}`);
-       }
+    if (!updateResponse.ok) {
+      throw new Error(`Error updating ingredient with name ${name}: ${updateResponse.status} - ${updateResponse.statusText}`);
+    }
 
-       console.log(`Ingredient with name ${name} stock updated successfully!`);
-     } catch (error) {
-       console.error(error);
-     }
+    console.log(`Ingredient with name ${name} stock updated successfully!`);
+  } catch (error) {
+    console.error(error);
+  }
 }
+
+

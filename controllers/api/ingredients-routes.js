@@ -72,7 +72,7 @@ router.put('/name/:name', async (req, res) => {
       return res.status(404).json({ error: 'Ingredient not found' });
     }
 
-    await ingredient.update({ stock: parseFloat(ingredient.stock) + parseFloat(stock) });
+    await ingredient.update({ stock: parseFloat(ingredient.stock) + parseFloat(stock) }); // Use + instead of -
 
     res.json({ message: 'Ingredient stock updated successfully' });
   } catch (err) {
@@ -80,5 +80,6 @@ router.put('/name/:name', async (req, res) => {
     res.status(500).json({ error: 'Failed to update ingredient stock', details: err.message });
   }
 });
+
 
 module.exports = router;
