@@ -91,16 +91,20 @@ router.get('/menu/:id', async (req, res) => {
 });
 
 router.get('/order', async (req, res) => {
-  try {
-    const ingredientData = await Ingredients.findAll();
-    const ingredients = ingredientData.map((ingredient) => ingredient.get({ plain: true }));
-
-    // Pass the ingredients to the orders template
-    res.render('order', { ingredients });
-  } catch (err) {
+  if (req.session.loggedIn) {
+    try {
+      const ingredientData = await Ingredients.findAll();
+      const ingredients = ingredientData.map((ingredient) => ingredient.get({ plain: true }));
+      
+      // Pass the ingredients to the orders template
+      res.render('order', { ingredients });
+    } catch (err) {
     console.log(err);
     res.status(500).json(err);
-  }
+    }} else {
+      res.redirect('/')
+  
+    }  
 });
 
 
